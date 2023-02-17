@@ -1,31 +1,22 @@
 package com.mongodb.demo.entities;
 
-import jakarta.persistence.*;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 
 @Data
-@RequiredArgsConstructor
-@Entity
-@Table(name = "address")
+@Document
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
-
-    @Column(name = "avenue")
+    private String id;
     private String avenue;
-
-    @Column(name = "street")
     private String street;
-
-    @Column(name = "apartNo")
     private Integer apartNo;
-
     private String city;
-
     private String postCode;
+
+    private Employee employee;
 
     public Address(String avenue, String street, Integer apartNo, String city, String postCode) {
         this.avenue = avenue;
@@ -35,6 +26,5 @@ public class Address {
         this.postCode = postCode;
     }
 
-    @OneToOne
-    private Employee employee;
+
 }

@@ -48,12 +48,12 @@ public class EmployeeService {
     public void getMovies(MongoCollection<Document> collection){
 
         try {
-            FindIterable<Document> iterable = collection.find(eq("adi","Hard Target"));
+            FindIterable<Document> iterable = collection.find(eq("name","Hard Target"));
             MongoCursor<Document> cursor = iterable.iterator();
             while(cursor.hasNext()){
                 System.out.println(cursor.next().toJson());
             }
-            System.out.println(collection.find(eq("adi","Hard Target")));
+            System.out.println(collection.find(eq("name","Hard Target")));
         } catch (MongoException me) {
             System.err.println("Kayıt edilirken hata oluştu: " + me);
         }
